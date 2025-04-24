@@ -362,24 +362,25 @@ def save_workbook(data, file):
 
 
 def formatDateFile():
-  '''
-  Retorna o dia da semana com o sufixo
-  '''
+    '''
+    Retorna o dia da semana com o sufixo, em português, compatível com Replit
+    '''
+    
+    from datetime import datetime
+    from pytz import timezone
+    from babel.dates import format_datetime
 
-  from datetime import datetime
-  from pytz import timezone
-  import locale
+    tz = timezone('America/Sao_Paulo')
+    now = datetime.now(tz)
 
-  # Configura a localidade para português do Brasil
-  locale.setlocale(locale.LC_TIME, 'pt_BR.utf8')
-  tz = timezone('America/Sao_Paulo')
+    # Obtém o nome do dia da semana em português
+    day = format_datetime(now, "EEEE", locale='pt_BR').lower()
 
-  day = datetime.now(tz).strftime("%A")
+    if day in ['segunda', 'terça', 'quarta', 'quinta', 'sexta']:
+        day += '-feira'
 
-  if day in ['segunda', 'terça', 'quarta', 'quinta', 'sexta']:
-    day += '-feira'
+    return f'{day}.xlsx'
 
-  return f'{day}.xlsx'
 
 
 def permitionUser(idUser):
