@@ -53,8 +53,6 @@ async def document(client: Client, message: Message):
 
     # permitionUser(user_id)
 
-    # if permitionUser is not True:
-    #   pass
     
     file_name = message.document.file_name
     file_extension = path.splitext(file_name)[1]
