@@ -365,7 +365,7 @@ def formatDateFile():
     '''
     Retorna o dia da semana com o sufixo, em português, compatível com Replit
     '''
-    
+      
     from datetime import datetime
     from pytz import timezone
     from babel.dates import format_datetime
